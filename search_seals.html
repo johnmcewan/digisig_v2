@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">   
+
+<head>
+<title>Draft 1 of Digisig</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="digisig_v3.css">
+</head>
+
+<body>
+
+<div class="grid">
+
+	<div class="colophon">v.1 3/23/2020</div>
+	<nav class="global-nav">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li>
+				<div class="dropdown">
+					<button class="dropbtn">Search</button>
+					<div class="dropdown-content">
+						<a href="search_seals.html">Seals</a>
+						<a href="search_catalogue.html">Catalogues</a>
+						<a href="search_advanced.html">Advanced</a>
+					</div>
+				</div>
+			</li>
+			<li><a href="item.html">Item</a></li>
+			<li><a href="catalogue">Catalogue</a></li>			
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+	</nav>
+ 
+	<div class="search-banner"></div>
+	<div class="bannertext"><h1>Search Seals</h1><i>Search for Seal Impressions, Seal Matrices, and Seal Casts</i></div>
+
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="searchbar">
+		<form action="/action_page.php" target="_blank" method="get">
+			<label for="search">Search</label>
+			<input type="text" id="search" name="search">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div class="sidebar">
+					<h2>Limit your search</h2>
+					<form>
+					  <label for="series">repository (series)</label><br>
+					  <input type="radio" id="series" name="series" value="series"><br>
+					  <label for="photograph_type">photograph (conventional, rti)</label><br>
+					  <input type="radio" id="photograph_type" name="photograph_type" value="RTI"><br>
+					  <label for="nature">nature (cast, impression, matrix)</label><br>
+					  <input type="radio" id="nature" name="nature" value="series"><br>
+					  <label for="location">Location (county)</label><br>
+					  <input type="radio" id="location" name="location" value="series"><br>
+					  <label for="date">Date(period)</label><br>
+					  <input type="radio" id="date" name="date" value="series"><br>
+					</form>
+	</div>
+				
+	<div class="results" id="mainpage">
+		<table>
+			<tr>
+				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th>
+				<th><a href="item.html">The National Archives, E 42/386</a>, seal 1, [county]</th>
+<!--				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C4852910">The National Archives, E 42/386</a>, seal 1, [county] </th> -->
+				<th><img src="images/small/10005834_GB0066_E42_386_recto.jpg" alt="impression photograph"></tr>
+			</tr>
+			<tr>
+				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th>
+				<th><a href="item.html">The National Archives, DL 27/62</a>, seal 1, [county]</th>
+<!--				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C5414249"> The National Archives, DL 27/62</a>, seal 1, [county]</th> -->
+				<th><img src="images/small/10001404_GB0066_DL27_62_2.jpg" alt="impression photograph"></tr>
+			</tr>
+			<tr>
+				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th> 
+				<th><a href="item.html">3 [Document reference number]</a>, [seal number] [county]</th>
+				<th><img src="images/small/10000014_GB0036_MiscCh_5574_1.jpg" alt="impression photograph"></th>
+			</tr>
+		</table>
+	</div>
+
+	<footer class="main-footer">
+		<table>
+		  <tr>
+			<th scope="col">Digisig</th>
+			<th scope="col">Search</th>
+			<th scope="col">Other</th>
+		  </tr>
+		  <tr>
+			<td>About</td>
+			<td>Seals</td>
+			<td>Maps</td>
+		  </tr>
+		  <tr>
+			<td>Contact</td>
+			<td>Catalogues</td>
+			<td>RTI</td>
+		  </tr>
+		</table>
+	</footer>
+
+</div>
+
+</body>
+</html>
