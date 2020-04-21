@@ -48,15 +48,67 @@
 
 	<div class="sidebar">
 					<h2>Limit your search</h2>
-					<form>
-					  <label for="series">repository (series)</label><br>
-					  <input type="radio" id="series" name="series" value="series"><br>
+					<form action="/action_page.php">
+						<label for="Repository">Select a repository:</label>
+						<select id="repository" name="repository">
+							<option value = "" selected></option>
+							<option value="Bangor University, Archives and Special Collections">Bangor University, Archives and Special Collections</option>
+							<option value="British Library">British Library</option>
+							<option value="British Museum">British Museum</option>
+							<option value="Canterbury Cathedral Archives">Canterbury Cathedral Archives</option>
+							<option value="Cheshire Archives and Local Studies">Cheshire Archives and Local Studies</option>
+							<option value="Devon Archives and Local Studies Service">Devon Archives and Local Studies Service</option>
+							<option value="Durham Cathedral Library">Durham Cathedral Library</option>
+							<option value="Durham County Record Office">Durham County Record Office</option>
+							<option value="Durham University Library, Special Collections">Durham University Library, Special Collections</option>
+							<option value="East Sussex Record Office">East Sussex Record Office</option>
+							<option value="Eton College">Eton College</option>
+							<option value="Exeter Cathedral Library and Archives">Exeter Cathedral Library and Archives</option>
+							<option value="Goldsmith's Company Archive">Goldsmith's Company Archive</option>
+							<option value="Guildhall Library">Guildhall Library</option>
+							<option value="Gwent Archives">Gwent Archives</option>
+							<option value="Gwynedd Archives, Caernarfon Record Office">Gwynedd Archives, Caernarfon Record Office</option>
+							<option value="Hereford Cathedral Archives">Hereford Cathedral Archives</option>
+							<option value="Herefordshire Archive Service">Herefordshire Archive Service</option>
+							<option value="Huntington Library">Huntington Library</option>
+							<option value="Leathersellers' Company">Leathersellers' Company</option>
+							<option value="London Metropolitan Archives">London Metropolitan Archives</option>
+							<option value="London University: Senate House Library">London University: Senate House Library</option>
+							<option value="Museum of London">Museum of London</option>
+							<option value="National Library of Wales">National Library of Wales</option>
+							<option value="National Records of Scotland">National Records of Scotland</option>
+							<option value="Northamptonshire Record Office">Northamptonshire Record Office</option>
+							<option value="Oxford University: Balliol College Manuscripts">Oxford University: Balliol College Manuscripts</option>
+							<option value="Oxford University: Bodleian Library">Oxford University: Bodleian Library</option>
+							<option value="Oxford University: Magdalen College Archives">Oxford University: Magdalen College Archives</option>
+							<option value="Portable Antiquities Scheme">Portable Antiquities Scheme</option>
+							<option value="Private Collection">Private Collection</option>
+							<option value="Published Source">Published Source</option>
+							<option value="Saint Bartholomew's Hospital Archives">Saint Bartholomew's Hospital Archives</option>
+							<option value="Shropshire Archives">Shropshire Archives</option>
+							<option value="The National Archives">The National Archives</option>
+							<option value="Wells City Archives">Wells City Archives</option>
+							<option value="Westminster Abbey Muniment Room">Westminster Abbey Muniment Room</option>
+						</select>
+						<input type="submit">
+					</form>
+					<form action ="/action_page.php"
+						<lable for="series">Select a series or collection:</lable>
+						<select id="series" name="series">
+							
+						</select>
+						Photograph
+
 					  <label for="photograph_type">photograph (conventional, rti)</label><br>
 					  <input type="radio" id="photograph_type" name="photograph_type" value="RTI"><br>
+					
+					
 					  <label for="nature">nature (cast, impression, matrix)</label><br>
 					  <input type="radio" id="nature" name="nature" value="series"><br>
+
 					  <label for="location">Location (county)</label><br>
 					  <input type="radio" id="location" name="location" value="series"><br>
+
 					  <label for="date">Date(period)</label><br>
 					  <input type="radio" id="date" name="date" value="series"><br>
 					</form>
@@ -65,19 +117,16 @@
 	<div class="results" id="mainpage">
 		<table>
 			<tr>
-				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th>
-				<th><a href="item.html">The National Archives, E 42/386</a>, seal 1, [county]</th>
-<!--				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C4852910">The National Archives, E 42/386</a>, seal 1, [county] </th> -->
+				<th><a href="item.html">The National Archives, E 42/386</a>, seal 1, [county] [digisigID] </th>
+				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C4852910">Link to TNA site</a></th>
 				<th><img src="images/small/10005834_GB0066_E42_386_recto.jpg" alt="impression photograph"></tr>
 			</tr>
 			<tr>
-				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th>
 				<th><a href="item.html">The National Archives, DL 27/62</a>, seal 1, [county]</th>
 <!--				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C5414249"> The National Archives, DL 27/62</a>, seal 1, [county]</th> -->
 				<th><img src="images/small/10001404_GB0066_DL27_62_2.jpg" alt="impression photograph"></tr>
 			</tr>
 			<tr>
-				<th><img src="images/icons/digisigimpression.png" alt="impression icon"></th> 
 				<th><a href="item.html">3 [Document reference number]</a>, [seal number] [county]</th>
 				<th><img src="images/small/10000014_GB0036_MiscCh_5574_1.jpg" alt="impression photograph"></th>
 			</tr>
