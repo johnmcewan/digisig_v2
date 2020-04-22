@@ -48,59 +48,253 @@
 
 	<div class="sidebar">
 					<h2>Limit your search</h2>
-					<form action="/action_page.php">
+					<form>
 						<label for="Repository">Select a repository:</label>
-						<select id="repository" name="repository">
+						<script>
+						function repositoryFunction() {
+							var x = document.getElementById("repository").value;
+							var targetrepository = "repository_" + x;
+							for(var i=0; i < series.options.length; i++)
+						    {
+						    	series.options[i].style.display = "none";
+								if(series.options[i].id == targetrepository)
+									series.options[i].style.display = "block";
+						    }
+						}
+						</script>
+						<select id="repository" name="repository" onchange="repositoryFunction()">
 							<option value = "" selected></option>
-							<option value="Bangor University, Archives and Special Collections">Bangor University, Archives and Special Collections</option>
-							<option value="British Library">British Library</option>
-							<option value="British Museum">British Museum</option>
-							<option value="Canterbury Cathedral Archives">Canterbury Cathedral Archives</option>
-							<option value="Cheshire Archives and Local Studies">Cheshire Archives and Local Studies</option>
-							<option value="Devon Archives and Local Studies Service">Devon Archives and Local Studies Service</option>
-							<option value="Durham Cathedral Library">Durham Cathedral Library</option>
-							<option value="Durham County Record Office">Durham County Record Office</option>
-							<option value="Durham University Library, Special Collections">Durham University Library, Special Collections</option>
-							<option value="East Sussex Record Office">East Sussex Record Office</option>
-							<option value="Eton College">Eton College</option>
-							<option value="Exeter Cathedral Library and Archives">Exeter Cathedral Library and Archives</option>
-							<option value="Goldsmith's Company Archive">Goldsmith's Company Archive</option>
-							<option value="Guildhall Library">Guildhall Library</option>
-							<option value="Gwent Archives">Gwent Archives</option>
-							<option value="Gwynedd Archives, Caernarfon Record Office">Gwynedd Archives, Caernarfon Record Office</option>
-							<option value="Hereford Cathedral Archives">Hereford Cathedral Archives</option>
-							<option value="Herefordshire Archive Service">Herefordshire Archive Service</option>
-							<option value="Huntington Library">Huntington Library</option>
-							<option value="Leathersellers' Company">Leathersellers' Company</option>
-							<option value="London Metropolitan Archives">London Metropolitan Archives</option>
-							<option value="London University: Senate House Library">London University: Senate House Library</option>
-							<option value="Museum of London">Museum of London</option>
-							<option value="National Library of Wales">National Library of Wales</option>
-							<option value="National Records of Scotland">National Records of Scotland</option>
-							<option value="Northamptonshire Record Office">Northamptonshire Record Office</option>
-							<option value="Oxford University: Balliol College Manuscripts">Oxford University: Balliol College Manuscripts</option>
-							<option value="Oxford University: Bodleian Library">Oxford University: Bodleian Library</option>
-							<option value="Oxford University: Magdalen College Archives">Oxford University: Magdalen College Archives</option>
-							<option value="Portable Antiquities Scheme">Portable Antiquities Scheme</option>
-							<option value="Private Collection">Private Collection</option>
-							<option value="Published Source">Published Source</option>
-							<option value="Saint Bartholomew's Hospital Archives">Saint Bartholomew's Hospital Archives</option>
-							<option value="Shropshire Archives">Shropshire Archives</option>
-							<option value="The National Archives">The National Archives</option>
-							<option value="Wells City Archives">Wells City Archives</option>
-							<option value="Westminster Abbey Muniment Room">Westminster Abbey Muniment Room</option>
+							<option value="24">Bangor University, Archives and Special Collections</option>
+							<option value="3">British Library</option>
+							<option value="37">British Museum</option>
+							<option value="7">Canterbury Cathedral Archives</option>
+							<option value="20">Cheshire Archives and Local Studies</option>
+							<option value="27">Durham Cathedral Library</option>
+							<option value="34">Durham County Record Office</option>
+							<option value="13">Durham University Library, Special Collections</option>
+							<option value="12">East Sussex Record Office</option>
+							<option value="30">Eton College</option>
+							<option value="17">Exeter Cathedral Library and Archives</option>
+							<option value="25">Gwent Archives</option>
+							<option value="23">Gwynedd Archives, Caernarfon Record Office</option>
+							<option value="14">Hereford Cathedral Archives</option>
+							<option value="21">Herefordshire Archive Service</option>
+							<option value="26">Huntington Library</option>
+							<option value="38">Leathersellers' Company</option>
+							<option value="1">London Metropolitan Archives</option>
+							<option value="15">London University: Senate House Library</option>
+							<option value="39">Museum of London</option>
+							<option value="18">National Library of Wales</option>
+							<option value="40">National Records of Scotland</option>
+							<option value="33">Northamptonshire Record Office</option>
+							<option value="29">Oxford University: Bodleian Library</option>
+							<option value="11">Oxford University: Magdalen College Archives</option>
+							<option value="28">Portable Antiquities Scheme</option>
+							<option value="5">Saint Bartholomew's Hospital Archives</option>
+							<option value="22">Shropshire Archives</option>
+							<option value="4">The National Archives</option>
+							<option value="35">UNKNOWN</option>
+							<option value="32">Wells City Archives</option>
+							<option value="10">Westminster Abbey Muniment Room</option>
 						</select>
-						<input type="submit">
-					</form>
-					<form action ="/action_page.php"
-						<lable for="series">Select a series or collection:</lable>
+						<label for="series">Select a series or collection:</label>
 						<select id="series" name="series">
-							
-						</select>
-						Photograph
+							<option value = "" selected></option>
+							<option value="258" id="repository_39"></option>
+							<option value="362" id="repository_27">2.4. Ebor</option>
+							<option value="295" id="repository_21">A95/2</option>
+							<option value="296" id="repository_21">A95/5</option>
+							<option value="298" id="repository_21">AA26/II/</option>
+							<option value="304" id="repository_22">Acton Reynald (Corbet Family): 322/2/</option>
+							<option value="100" id="repository_1">ADD MS</option>
+							<option value="314" id="repository_3">Add. Roll</option>
+							<option value="8" id="repository_3">Additional Charter</option>
+							<option value="48" id="repository_3">Additional Manuscript</option>
+							<option value="241" id="repository_12">AMSD/AMS</option>
+							<option value="294" id="repository_12">AMSR/AMS</option>
+							<option value="28" id="repository_11">Annington</option>
+							<option value="384" id="repository_27">Arch.Dunelm.</option>
+							<option value="385" id="repository_27">Arch.Northumb.</option>
+							<option value="383" id="repository_27">Archiepiscopalia</option>
+							<option value="283" id="repository_18">Bachymbyd</option>
+							<option value="243" id="repository_12">BAT</option>
+							<option value="347" id="repository_26">Battle Abbey</option>
+							<option value="31" id="repository_11">Beeding</option>
+							<option value="24" id="repository_11">Biglington&Bramber</option>
+							<option value="206" id="repository_11">Binelands&Grinstead</option>
+							<option value="158" id="repository_3">Birch MSS</option>
+							<option value="365" id="repository_33">Boughton House</option>
+							<option value="218" id="repository_11">Brackley</option>
+							<option value="267" id="repository_18">Bronwydd</option>
+							<option value="33" id="repository_11">Buddington</option>
+							<option value="398" id="repository_4">C106</option>
+							<option value="355" id="repository_4">C109</option>
+							<option value="396" id="repository_4">C110</option>
+							<option value="391" id="repository_4">C124</option>
+							<option value="91" id="repository_4">C146</option>
+							<option value="25" id="repository_4">C147</option>
+							<option value="39" id="repository_4">C148</option>
+							<option value="397" id="repository_4">C82</option>
+							<option value="155" id="repository_3">Ch. Br.</option>
+							<option value="265" id="repository_18">CHIRK</option>
+							<option value="364" id="repository_32">City Charter</option>
+							<option value="1" id="repository_1">CLA/007/EM/02</option>
+							<option value="7" id="repository_1">CLC/313/L/H/001/MS25121</option>
+							<option value="49" id="repository_1">CLC/313/L/H/002/MS25122</option>
+							<option value="99" id="repository_1">CLC/313/P/008/MS25271</option>
+							<option value="285" id="repository_1">COL/CH/01</option>
+							<option value="153" id="repository_3">Cotton Charter</option>
+							<option value="152" id="repository_3">Cotton MS</option>
+							<option value="213" id="repository_11">Crokehurst</option>
+							<option value="374" id="repository_34">D/GR</option>
+							<option value="386" id="repository_34">D/GR</option>
+							<option value="400" id="repository_34">D/Sa/D</option>
+							<option value="401" id="repository_34">D/St/D1</option>
+							<option value="402" id="repository_34">D/St/D2</option>
+							<option value="403" id="repository_34">D/St/D3</option>
+							<option value="405" id="repository_34">D/St/D5</option>
+							<option value="293" id="repository_20">D3785/1/</option>
+							<option value="297" id="repository_21">D52/B/1</option>
+							<option value="268" id="repository_25">D8/1/</option>
+							<option value="97" id="repository_7">DCc-ChAnt</option>
+							<option value="166" id="repository_10">Deed (WAM)</option>
+							<option value="249" id="repository_17">Deeds (Exeter)</option>
+							<option value="205" id="repository_3">Detached Seal</option>
+							<option value="346" id="repository_4">DL10_Deeds</option>
+							<option value="10" id="repository_4">DL25_DeedsSeriesL</option>
+							<option value="318" id="repository_4">DL26_DeedsSeriesL</option>
+							<option value="168" id="repository_4">DL27_DeedsSeriesLS</option>
+							<option value="395" id="repository_4">DL34</option>
+							<option value="366" id="repository_4">DL41</option>
+							<option value="369" id="repository_4">DL42</option>
+							<option value="288" id="repository_20">DLL/1</option>
+							<option value="289" id="repository_20">DLL/2</option>
+							<option value="290" id="repository_20">DLL/3</option>
+							<option value="291" id="repository_20">DLL/4</option>
+							<option value="344" id="repository_3">Doubleday Cast</option>
+							<option value="345" id="repository_13">DUL Additional Manuscript</option>
+							<option value="371" id="repository_27">Durham Cathedral Muniments: Elemosinaria</option>
+							<option value="32" id="repository_11">Durrington</option>
+							<option value="286" id="repository_20">DWN/1</option>
+							<option value="287" id="repository_20">DWN/2</option>
+							<option value="157" id="repository_3">E.B. (Electotype)</option>
+							<option value="361" id="repository_30">E.C.R. 17</option>
+							<option value="222" id="repository_4">E101</option>
+							<option value="390" id="repository_4">E135</option>
+							<option value="354" id="repository_4">E142</option>
+							<option value="204" id="repository_4">E179_Exchequer: King's Remembrancer</option>
+							<option value="393" id="repository_4">E21</option>
+							<option value="40" id="repository_4">E210</option>
+							<option value="353" id="repository_4">E211</option>
+							<option value="37" id="repository_4">E212</option>
+							<option value="41" id="repository_4">E213</option>
+							<option value="388" id="repository_4">E25</option>
+							<option value="352" id="repository_4">E26</option>
+							<option value="358" id="repository_4">E30</option>
+							<option value="359" id="repository_4">E322</option>
+							<option value="34" id="repository_4">E326</option>
+							<option value="215" id="repository_4">E327_Ancient Deeds_BX</option>
+							<option value="22" id="repository_4">E328</option>
+							<option value="36" id="repository_4">E329</option>
+							<option value="389" id="repository_4">E33</option>
+							<option value="370" id="repository_4">E39</option>
+							<option value="11" id="repository_4">E40_DeedsSeriesA</option>
+							<option value="26" id="repository_4">E41</option>
+							<option value="17" id="repository_4">E42_DeedsSeriesAS</option>
+							<option value="27" id="repository_4">E43</option>
+							<option value="376" id="repository_27">Eboracensia</option>
+							<option value="44" id="repository_3">Egerton Charter</option>
+							<option value="409" id="repository_3">Egerton MS</option>
+							<option value="378" id="repository_27">Finchalia</option>
+							<option value="212" id="repository_11">Findon</option>
+							<option value="246" id="repository_15">Fuller Collection 1/28</option>
+							<option value="242" id="repository_12">GLY</option>
+							<option value="211" id="repository_11">Greenstead and Steanford</option>
+							<option value="9" id="repository_3">Harley Charter</option>
+							<option value="154" id="repository_3">Harley MS</option>
+							<option value="149" id="repository_3">Harley Roll</option>
+							<option value="225" id="repository_11">Harwell</option>
+							<option value="380" id="repository_27">Haswell</option>
+							<option value="165" id="repository_5">HC/1</option>
+							<option value="303" id="repository_14">HCA_Deed</option>
+							<option value="302" id="repository_21">Hillcourt: F8/II</option>
+							<option value="301" id="repository_40">Holyrood Abbey_GD45/13</option>
+							<option value="16" id="repository_3">Lansdown Charter</option>
+							<option value="351" id="repository_3">LFC Ch</option>
+							<option value="310" id="repository_22">Lilleshall: 972/1/1/</option>
+							<option value="270" id="repository_25">Llanarth Court: D2</option>
+							<option value="269" id="repository_25">Llanarth Court: D583</option>
+							<option value="377" id="repository_27">Locelli</option>
+							<option value="35" id="repository_4">LR14</option>
+							<option value="216" id="repository_4">LR15_DeedsSeries_EE</option>
+							<option value="407" id="repository_38">LWE</option>
+							<option value="247" id="repository_1">Manuscripts</option>
+							<option value="356" id="repository_40">MelroseCharters_GD55</option>
+							<option value="240" id="repository_27">Misc.Ch</option>
+							<option value="275" id="repository_24">Mostyn</option>
+							<option value="363" id="repository_29">MS Ch. Suffolk</option>
+							<option value="280" id="repository_18">Mynde</option>
+							<option value="307" id="repository_22">Oakly_20/5/</option>
+							<option value="308" id="repository_22">Oakly_20/6/</option>
+							<option value="309" id="repository_22">Oakly_20/7/</option>
+							<option value="387" id="repository_37">object</option>
+							<option value="360" id="repository_29">Oseney Ch.</option>
+							<option value="382" id="repository_27">Papalia</option>
+							<option value="277" id="repository_24">Penrhyn</option>
+							<option value="278" id="repository_24">Penrhyn_Further Addition MSS</option>
+							<option value="266" id="repository_18">PENRICE: GLAMORGAN CHARTERS</option>
+							<option value="299" id="repository_21">Pilley: CF54</option>
+							<option value="264" id="repository_18">PITORD</option>
+							<option value="379" id="repository_27">Pontificalia</option>
+							<option value="357" id="repository_28">Portable Antiquities Scheme</option>
+							<option value="305" id="repository_22">Powis Estate Reciords: 5981/B/2/262</option>
+							<option value="306" id="repository_22">Powis_5981/B/2/256/</option>
+							<option value="410" id="repository_4">PRO 23</option>
+							<option value="300" id="repository_35">Reading, Add. Charter</option>
+							<option value="381" id="repository_27">Regalia</option>
+							<option value="349" id="repository_35">Rievaulx</option>
+							<option value="220" id="repository_12">RYE/136</option>
+							<option value="375" id="repository_27">Sacristaria</option>
+							<option value="221" id="repository_12">SAS-G/47</option>
+							<option value="263" id="repository_12">SAS-RF/1</option>
+							<option value="244" id="repository_12">SAS-RF/12</option>
+							<option value="394" id="repository_4">SC10</option>
+							<option value="167" id="repository_4">SC13_Seals</option>
+							<option value="392" id="repository_4">SC7</option>
+							<option value="316" id="repository_3">Seal</option>
+							<option value="219" id="repository_11">Selbourne</option>
+							<option value="30" id="repository_11">Sele</option>
+							<option value="372" id="repository_27">Sherburn Hospital deeds</option>
+							<option value="29" id="repository_11">Shoreham</option>
+							<option value="138" id="repository_3">Sloane Charter</option>
+							<option value="223" id="repository_11">Southwark</option>
+							<option value="210" id="repository_11">Southwick</option>
+							<option value="373" id="repository_27">Specialia</option>
+							<option value="151" id="repository_26">STG Evidences</option>
+							<option value="313" id="repository_3">stowe</option>
+							<option value="315" id="repository_3">Stowe charters</option>
+							<option value="311" id="repository_3">Stowe collection, Burton charters</option>
+							<option value="312" id="repository_3">Stowe collection, Flixton charters</option>
+							<option value="156" id="repository_3">Stowe collection, Ipswich charters</option>
+							<option value="217" id="repository_11">Swaby</option>
+							<option value="209" id="repository_11">Thakenham</option>
+							<option value="147" id="repository_3">Topham Charter</option>
+							<option value="406" id="repository_34">UD/BC</option>
+							<option value="2" id="repository_35">UNKNOWN</option>
+							<option value="274" id="repository_23">Vaynol/Ches</option>
+							<option value="273" id="repository_23">Vaynol/Glan</option>
+							<option value="350" id="repository_4">WARD 2</option>
+							<option value="229" id="repository_11">Westbury</option>
+							<option value="279" id="repository_18">Wigfair</option>
+							<option value="148" id="repository_3">Wolley Charter</option>
+							<option value="281" id="repository_18">WYNNSTAY, Strata Marchella</option>
+							<option value="272" id="repository_23">XD2</option>
+						</select>						
+					</form>
 
-					  <label for="photograph_type">photograph (conventional, rti)</label><br>
-					  <input type="radio" id="photograph_type" name="photograph_type" value="RTI"><br>
+
+						<lable for="Photograph">Select photograph type:</lable>
+							<input type="radio" id="photograph_type" name="photograph_type" value="RTI"><br>
 					
 					
 					  <label for="nature">nature (cast, impression, matrix)</label><br>
