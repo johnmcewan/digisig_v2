@@ -104,29 +104,39 @@
 	}
 
 	// action on selection of a repository -- should limit options from series list and make series available
-	function repositoryFunction() {		
-		var repository_options = document.getElementsByName('repository_form');
-		// find the checked radio button value
-		for (var i = 0, length = repository_options.length; i < length; i++) {
-            //use checked radio button's value to limit series list
-			if(repository_options[i].checked) {
-				var repository_selected = repository_options[i].value;
-				var repository_target = "repository_" + repository_selected;
-                //manipulate the radial check boxes in series
-                var series_options = document.getElementsByName('series_form');
-               	for (var j = 0, length_series = series_options.length; j < length_series; j++) {
-               		//default is to hide the radio box and the associated label 				    	
-				   	//series_options[j].style.display = "none";
-				   	var series_value = "series_" + series_options[j].value
-				   	document.getElementById(series_value).style.display = "none";
-
-		    		if(series_options[j].id == repository_target) {
-						//series_options[j].style.display = "block";
-						document.getElementById(series_value).style.display = "block";
-		    		}
-    			}	
-			}
-        }
+	function repositoryFunction() {
+		//check to see if form has a value
+		var statusrepository = document.getElementById('repository_form').value;
+			if (statusrepository = "") {
+	    		document.getElementById('series_form').style.display="display:none";
+	    		document.getElementById('series_filter_button').disabled = true;
+	    		document.getElementById('series_label').style="opacity:0.6";
+			} else {
+				//as a repository has been selected, enable the series form
+				document.getElementById('series_filter_button').disabled = false;
+				document.getElementById('series_filter_button').title="Select a series or collection";
+				document.getElementById('series_label').style="opacity:1";
+				// find the checked radio button value
+				var repository_options = document.getElementsByName('repository_form');
+				for (var i = 0, length = repository_options.length; i < length; i++) {
+				//use checked radio button's value to limit series list
+					if(repository_options[i].checked) {
+						var repository_selected = repository_options[i].value;
+						var repository_target = "repository_" + repository_selected;
+			            //manipulate the radial check boxes in series
+			            var series_options = document.getElementsByName('series_form');
+			           	for (var j = 0, length_series = series_options.length; j < length_series; j++) {
+			           		//default is to hide the radio box and the associated label 				    	
+						   	var series_value = "series_" + series_options[j].value
+						   	document.getElementById(series_value).style.display = "none";
+						   	//if the series is located in the selected repository then enable
+				    		if(series_options[j].id == repository_target) {
+								document.getElementById(series_value).style.display = "block";
+				    		}
+			    		}	
+					}
+			    }
+    		}
     }
 
 	/*	document.getElementById("series").selectedIndex = "0";
@@ -210,6 +220,7 @@
 
 	<div class="sidebar">
 		<h2>Filter</h2>
+
 		<div class="filteroption">
 		<label for="repository">Repository</label>
 		<button id="repository_filter_button" onclick="filter_button('repository_form')">+</button>
@@ -252,8 +263,8 @@
 		</div>
 
 		<div class="filteroption">
-		<label for="series" style="opacity:0.6;">Series or collection</label>
-		<button id="series_filter_button" onclick="filter_button('series_form')" style="cursor:not-allowed;">+</button>
+		<label id="series_label" for="series" style="opacity:0.6;">Series or collection</label>
+		<button disabled title="To enable, select a repository" id="series_filter_button" onclick="filter_button('series_form')";>+</button>
 		<form id="series_form" style="display:none">
 			<br>
 			<span id="series_258"><input type="radio" name="series_form" value="258" id="repository_39"><label id="series_258" for=""></label><br></span>
@@ -445,7 +456,6 @@
 			<span id="series_148"><input type="radio" name="series_form" value="148" id="repository_3"><label id="series_148" for="Wolley Charter">Wolley Charter</label><br></span>
 			<span id="series_281"><input type="radio" name="series_form" value="281" id="repository_18"><label id="series_281" for="WYNNSTAY, Strata Marchella">WYNNSTAY, Strata Marchella</label><br></span>
 			<span id="series_272"><input type="radio" name="series_form" value="272" id="repository_23"><label id="series_272" for="XD2">XD2</label><br></span>
-
 		</form>
 		</div>
 
