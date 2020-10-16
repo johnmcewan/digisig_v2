@@ -1,0 +1,79 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="search-banner"></div>
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="sidebar">
+		<table>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Date:</td>
+				<td>{{seal_object.datestart_seal}}, {{seal_object.dateend_seal}}</td>
+			</tr>
+			<tr>
+				<td>Digisig Id</td>
+				<td>{{seal_object.id_seal}}</td>
+			</tr>
+
+			<tr>
+				<td>Links:</td>
+				<td><a href="entity/{{seal_object.id_seal}}">seal</a> 
+				{% for key, val in sealdescriptions %}
+					{% if key == manifestation.id_manifestation %}
+					, <a href="entity/{{val}}">catalogue</a>
+					{% endif %}
+				{% endfor%}
+				</td>
+			</tr>
+		</table>
+	</div>
+				
+	<div class="results" id="mainpage">
+		<div>Results</div>
+		<div>Showing {{manifestation_object.count}} of {{totalrows}}</div>
+
+		{% for manifestation in manifestation_object %}
+		<div>
+			<table>
+			<tr>
+				<td>Reference:</td>
+				<td>{{manifestation.repository}}, <a href="entity/{{manifestation.fk_item}}">{{manifestation.shelfmark}}</a>
+					{% if manifestation.number != null %}, seal {{manifestation.number}} {% endif %}</td>
+			</tr>
+			<tr>
+				<th>Features:</th>
+				<th>{% if manifestation.nature_name != null %}{{manifestation.nature_name}}{% endif %}
+				{% if manifestation.attachment != null %}{{manifestation.attachment}}{% endif %}</th>
+			</tr>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+			</table>
+		</div>
+		<div>
+			{% if manifestation.representation_filename != null %}
+			<img src=" {% static 'sealquery/images/small/'%}{{manifestation.representation_filename}}" height = "100" alt="impression photograph">
+			{% endif %}
+		</div>
+		{% endfor %}
+	</div>
+
+
+{% endblock %}

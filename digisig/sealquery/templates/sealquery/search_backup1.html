@@ -1,0 +1,183 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+	.search-advanced-banner {
+	background-image: url({% static "sealquery/images/map.jpg" %}); 
+	}
+</style>
+
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="sidebar" onload="setDefault()">
+		<h2>Filter</h2>
+
+		<form action=" {% url 'search' %}" method="post">
+			{% csrf_token %}
+		<input type="submit" value="Submit">
+		
+		<div>
+		<label for="repository">Repository</label>
+		<br>
+		<div class="repository_form">
+			<select id="repository_options" name="repository_options" onchange="repositoryFunction()">
+				<option value="0"></option>
+				{% for repository in repository_object %}
+				<option value="{{repository.pk_repository}}">{{repository.repository_fulltitle}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		</div>
+
+		<div class="filteroption">
+		<label id="series_label" for="series or collection" style="opacity:0.6;">Series or collection</label>
+			<select id="series_options" name="series_options" style="opacity:0.6" disabled>
+				<option value="0"></option>
+				{% for series in series_object %}
+				<option id="repository_{{series.fk_repository}}" value="{{series.pk_series}}">{{series.series_name}}</option>
+			{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="photograph_form">
+		<label for="photograph">Photograph</label>
+			<select id="photograph_type" name="photograph_type">
+				<option value="0"></option>
+				{% for representation in representation_object %}
+				<option value="{{representation.pk_representation_type}}">{{representation.representation_type}}</option>
+			{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="nature_form">
+		<label for="nature">Nature</label>
+			<select id="nature" name="nature">
+				<option value="0"></option>
+				{% for nature in nature_object %}
+				<option  value="{{nature.pk_nature}}">{{nature.nature_name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="location_form">
+		<label for="location">Location</label>
+			<select id="location" name="location">
+				<option value="0"></option>
+				{% for counties in county_object %}
+				<option value="{{counties.pk_counties_uk}}">{{counties.location_county}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="date_form">
+		<label for="date">Date</label>
+			<select id="timegroup" name="timegroup">
+				<option value="0"></option>	
+				{% for timegroup in timegroup_object %}	
+				<option value="{{timegroup.timegroup_a}}">{{timegroup.timegroup_a_range}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="shape_form">
+		<label for="shape">Shape</label>
+			<select id="shape_options" name="shape_options">
+				<option value="0"></option>
+				{% for shape_option in shape_object %}	
+				<option value="{{shape_option.pk_shape}}">{{shape_option.shape}}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="filteroption" id="shelfmark_form">
+		<label for="shelfmark">Record or Object Identifier</label>
+			<input type="text" id="shelfmark" name="shelfmark">
+		</div>
+
+
+		<button id="filter_clear_button" onclick="setDefault()">Clear Filter</button>
+
+	</div>
+
+	<div class="results" id="mainpage">
+		<div><p>{{totalrows}}</p></div>
+		<div>
+		<table>
+			{% for manifestation in manifestation_object %}
+			<tr>
+				<th><a href="entity/{{manifestation.fk_item}}">{{manifestation.repository}}, {{manifestation.shelfmark}}</a>, seal {{manifestation.number}}, {{manifestation.id_manifestation}}</th>
+				<th><a href="http://discovery.nationalarchives.gov.uk/details/r/C4852910">Link to TNA site</a></th>
+				<th><img src="{{manifestation.representation_filename}}" alt="impression photograph"></tr>
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+	</div>
+
+
+
+<script>
+
+	// action on selection of a repository -- should limit options from series list and make series available
+	function repositoryFunction() {
+		//check to see if form has a value
+		var statusrepository = document.getElementById('repository_options').value;
+		targetseriesoptions = "repository_" + statusrepository;
+
+		if (statusrepository = "") {
+	    	document.getElementById('series_label').style="opacity:0.6";
+		} else {
+
+			//as a repository has been selected, enable the series form
+			document.getElementById("series_label").style="opacity:1";
+			document.getElementById("series_options").style="opacity:1";
+			document.getElementById("series_options").disabled = false;			
+
+			//find number of options and limit series list
+			var seriesoptionslength = document.getElementById("series_options").options.length;
+	        var x = document.getElementById("series_options");
+
+ 	        for (var j = 0; j < seriesoptionslength; j++) {
+// 	        	console.log(x.options[j].id);
+		     	document.getElementById("series_options").options[j].disabled = true;				
+		     	if(x.options[j].id == targetseriesoptions) {
+		     		console.log(x.options[j].value);
+		     		document.getElementById("series_options").options[j].disabled = false;
+//		     		document.getElementById("series_options").options[j].selected = true;
+				}
+			}			    		
+		}
+    }
+
+
+ 	function setDefault() {
+ 		document.getElementById('repository_options').value = {{default_options.repository_object}};
+		document.getElementById('series_options').value = {{default_options.series_object}};
+		document.getElementById('photograph_type').value = {{default_options.representation_object}};
+		document.getElementById('location').value = {{default_options.county_object}};
+		document.getElementById('nature').value = {{default_options.nature_object}};
+		document.getElementById('timegroup').value = {{default_options.timegroup_object}};
+		document.getElementbyId('shape_options').value = {{default_options.shape_object}};
+		document.getElementById('shelfmark').value = {{default_options.shelfmark}};
+		alert("defaults set")
+ 	}
+
+ 	function clearFilter() {
+ 		document.getElementById('repository_options').value = 0;
+		document.getElementById('series_options').value = 0;
+		document.getElementById('photograph_type').value = 0;
+		document.getElementById('location').value = 0;
+		document.getElementById('nature').value = 0;
+		document.getElementById('timegroup').value = 0;
+		document.getElementbyId('shape_options').value = 0;
+		document.getElementById('shelfmark').value = "";
+		alert("filter cleared")	
+ 	}
+
+</script>
+
+{% endblock %}

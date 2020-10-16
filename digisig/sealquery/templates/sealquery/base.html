@@ -1,0 +1,86 @@
+{% load static %}
+
+<html lang="en">   
+
+<head>
+<title>Digisig Revision</title>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" href="{% static 'sealquery/style.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'sealquery/images/favicon.ico' %}"/>
+
+<!-- Django needs to have the background images reference directly, rather than in the CSS file -->
+<style>
+	.colophon {
+	background-image: url({% static "sealquery/images/icons/Untitled-1.gif" %});
+	}
+	.home-banner {
+	background-image: url({% static "sealquery/images/banner_v3.jpg" %});
+	}
+	.search-banner {
+	background-image: url({% static "sealquery/images/IMGP9307_4.jpg" %});
+	}
+	.search-catalogue-banner {
+	background-image: url({% static "sealquery/images/IMGP9870_v4.jpg" %}); 
+	}
+	.search-advanced-banner {
+	background-image: url({% static "sealquery/images/map_v5.jpg" %}); 
+	}
+	.item-banner {
+	background-image: url({% static "sealquery/images/DSC_0359_v2.jpg" %}); 
+	}
+
+
+#search1 {
+	background-image: url({% static 'sealquery/images/IMGP9307_3.jpg' %});
+}
+
+#search2 {
+	background-image: url({% static 'sealquery/images/IMGP9870_v3.jpg' %});
+}
+
+#search3 {
+	background-image: url({% static 'sealquery/images/map.JPG' %});
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div class="grid">
+	<div class="colophon">v.1 3/23/2020</div>
+
+	<div class="searchbar">
+		<form action="/action_page.php" target="_blank" method="get">
+			<label for="search">Search Site</label>
+			<input type="text" id="search" name="search">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<nav class="global-nav" id="global-nav">
+		<ul>
+			<li ><a href="{% url 'index' %}">Home</a></li>
+			<li style="float: left; display: inline;"><a href="{% url 'search' %}">Search</a></li>	
+			<li style="float: left; display: inline;"><a href="{% url 'index' %}">Contact</a></li>
+			<li style="float: left; display: inline;"><a href="{% url 'index' %}">About</a></li>
+		</ul>
+	</nav>
+
+	<div class="bannertext"><h1>Digital Sigillography Resource</h1><i>Register of Seal Catalogues, Seal Impressions, and Seal Matrices</i></div>
+
+
+	{% block content %}
+	{% endblock %}
+
+
+	<footer class="main-footer">
+		<p>Here is the footer text</p>
+		<p>and some more text</p>
+	</footer>
+
+</div>
+</body>
+</html>

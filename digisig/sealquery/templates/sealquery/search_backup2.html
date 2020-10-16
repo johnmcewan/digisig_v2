@@ -1,0 +1,105 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="search-banner"></div>
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="sidebar">
+		<h2>Filter</h2>
+		<form action="search" method="post">
+    	{% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div class="results" id="mainpage">
+		<table>
+			<caption>Results</caption>
+			<tr>
+				<th></th>
+				<th></th>
+				<th>Showing {{totaldisplay}} of {{totalrows}}</th>
+			</tr>
+			{% for manifestation in manifestation_object %}
+			<tr>
+				<td>Reference:</td>
+				<td>{{manifestation.repository}}, <a href="entity/{{manifestation.fk_item}}">{{manifestation.shelfmark}}</a>
+				{% if manifestation.number != null %}, seal {{manifestation.number}} {% endif %}</td>
+				{% if manifestation.representation_filename != null %}
+				<td><img src=" {% static 'sealquery/images/small/'%}{{manifestation.representation_filename}}" height = "50" alt="impression photograph">
+				</td>
+				{% endif %}
+			</tr>
+			<tr>
+				{% if manifestation.repository_location != null %}
+				<th>Location:</th>
+				<th>{{manifestation.repository_location}}</th>
+				{% endif %}
+			</tr>
+			<tr>
+				<th>Date:</th>
+				<th>{{manifestation.repository_startdate}}
+				{% if manifestation.repository_enddate != null %}- {{manifestation.repository_enddate}}{% endif %}</th>
+			</tr>
+			<tr>
+				<th>Features:</th>
+				<th>{% if manifestation.nature_name != null %}{{manifestation.nature_name}}{% endif %}
+				{% if manifestation.attachment != null %}{{manifestation.attachment}}{% endif %}
+				</th>
+			</tr>
+			<tr>
+				<th>Links:</th>
+				<th><a href="entity/{{manifestation.fk_seal}}">seal</a>
+					{% for key, val in sealdescriptions %}
+						{% if key == manifestation.id_manifestation %}
+						, <a href="entity/{{val}}">catalogue</a>
+						{% endif %}
+					{% endfor%}
+				</th>
+			</tr>
+			<tr>
+				<th></th>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+<script>
+
+	// action on selection of a repository -- should limit options from series list and make series available
+	function repositoryFunction() {
+		//check to see if form has a value
+		var statusrepository = document.getElementById('repository_options').value;
+		targetseriesoptions = "repository_" + statusrepository;
+
+		if (statusrepository = "") {
+	    	document.getElementById('series_label').style="opacity:0.6";
+		} else {
+
+			//as a repository has been selected, enable the series form
+			document.getElementById("series_label").style="opacity:1";
+			document.getElementById("series_options").style="opacity:1";
+			document.getElementById("series_options").disabled = false;			
+
+			//find number of options and limit series list
+			var seriesoptionslength = document.getElementById("series_options").options.length;
+	        var x = document.getElementById("series_options");
+
+ 	        for (var j = 0; j < seriesoptionslength; j++) {
+// 	        	console.log(x.options[j].id);
+		     	document.getElementById("series_options").options[j].disabled = true;				
+		     	if(x.options[j].id == targetseriesoptions) {
+		     		console.log(x.options[j].value);
+		     		document.getElementById("series_options").options[j].disabled = false;
+				}
+			}			    		
+		}
+    }
+</script>
+
+{% endblock %}

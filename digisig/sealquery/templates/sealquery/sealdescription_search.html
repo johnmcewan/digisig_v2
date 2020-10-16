@@ -1,0 +1,39 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="search-catalogue-banner"></div>
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="sidebar">
+		<h2>Filter</h2>
+		<form id="form" action="sealdescription_search" method="post">
+    	{% csrf_token %}
+    	{{ form.as_p }}
+    	<input type="submit" value="Submit">
+		</form>
+	</div>
+				
+	<div class="results" id="mainpage">
+		<table>
+			<caption>Results</caption>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Description text</td>
+				{% if sealdescription_object.representation_filename != null %}
+				<td><img src=" {% static 'sealquery/images/descriptions/'%}{{sealdescription_object.representation_filename}}" width= "600" alt="impression photograph">
+				</td>
+				{% endif %}
+			</tr>
+
+		</table>
+	</div>
+
+{% endblock %}

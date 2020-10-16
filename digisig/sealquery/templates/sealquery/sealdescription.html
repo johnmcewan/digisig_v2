@@ -1,0 +1,55 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+	<div class="search-catalogue-banner"></div>
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="sidebar">
+		<table>
+			<tr>
+				<td>Id_seal description</td>
+				<td>{{sealdescription_object.id_sealdescription}}</td>
+			</tr>
+			<tr>
+				<td>Seal</td>
+				<td><a href="entity/{{sealdescription_object.fk_seal}}">{{sealdescription_object.fk_seal}}</a></td>
+			</tr>
+			<tr>
+				<td>Collection:</td>
+				<td>{{sealdescription_object.collection_fulltitle}}</td>
+			</tr>
+			<tr>
+				<td>Reference</td>
+				<td>{{sealdescription_object.sealdescription_identifier}}</td>
+			</tr>
+			<tr>
+				<td>Digisig Id</td>
+				<td>{{sealdescription_object.id_sealdescription}}</td>
+			</tr>
+		</table>
+	</div>
+				
+	<div class="results" id="mainpage">
+		<table>
+			<caption>Results</caption>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>Description text</td>
+				{% if sealdescription_object.representation_filename != null %}
+				<td><img src=" {% static 'sealquery/images/descriptions/'%}{{sealdescription_object.representation_filename}}" width= "600" alt="impression photograph">
+				</td>
+				{% endif %}
+			</tr>
+
+		</table>
+	</div>
+
+{% endblock %}

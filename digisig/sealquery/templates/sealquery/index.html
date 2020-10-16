@@ -1,0 +1,39 @@
+{% extends "sealquery/base.html" %}
+
+{% load static %}
+
+{% block content %}
+		
+	<div class="home-banner"></div>	
+	<div class="sidepanel-left"></div>
+	<div class="sidepanel-right"></div>
+
+	<div class="searchoptions" id="search1"><a href="{% url 'search' %}">Search Seals</a></div>
+	<div class="searchoptions" id="search2"><a href="{% url 'sealdescription_search' %}">Search Seal Catalogues</a></div>
+	<div class="searchoptions" id="search3"><a href="{% url 'advanced_search' %}">Advanced Search</a></div>
+
+	<div id="digisigtext" style="color:black;">
+                    <h2>Search finding aids, catalogues and research datasets through a single interface.</h2>
+					<p>DigiSig is an experimental digital humanities project which brings together a number of major
+                    datasets, produced by the archives, museums, and the higher education sectors. These datasets have been
+                    reconfigured, enhanced and integrated, so that can be searched in concert, and photographs added,
+                    where possible. The system enables users to access sigillographic information in a novel format.</p>					
+	</div>
+
+	<div id="digisigmap" style="color:black;">
+					<h2>Map</h2>
+					<p>Space, the final frontier. These are the voyages of the Starship Enterprise. 
+					Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before. 
+					Many say exploration is part of our destiny, but it’s actually our duty to future generations and their quest to ensure the survival of the human species.</p>
+			
+	</div>
+
+	<div id="digisigrti" style="color:black;">
+					<h2>About RTI</h2>
+					<p>Space, the final frontier. These are the voyages of the Starship Enterprise. 
+					Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before. 
+					Many say exploration is part of our destiny, but it’s actually our duty to future generations and their quest to ensure the survival of the human species.</p>
+	</div>
+	
+
+{% endblock %}
